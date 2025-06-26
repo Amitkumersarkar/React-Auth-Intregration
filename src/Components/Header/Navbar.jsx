@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -24,8 +25,15 @@ const Navbar = () => {
                                 <span className="badge">New</span>
                             </a>
                         </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        <NavLink to='/signup'>
+                            <li><a>SignUp</a></li>
+                        </NavLink>
+                        <NavLink to='/login'>
+                            <li><a>LogIn</a></li>
+                        </NavLink>
+                        <NavLink to='/login'>
+                            <li><a>Logout</a></li>
+                        </NavLink>
                     </ul>
                 </div>
             </div>
