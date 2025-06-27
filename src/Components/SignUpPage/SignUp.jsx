@@ -1,12 +1,23 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const SignUp = () => {
-
+    const { createUser } = useContext(AuthContext);
     const handleSignUp = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(name, email, password);
+
+        // create user
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log('Error', error.message);
+            })
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
