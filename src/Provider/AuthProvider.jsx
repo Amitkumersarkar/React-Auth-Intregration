@@ -7,20 +7,23 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const name = 'apple';
-
+    const [loading, setLoading] = useState(true);
     // use in signup page
     const createUser = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password);
+        setLoading(true);
     }
 
     // use in login page
     const signInUser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
+        setLoading(true);
     }
 
     // logout user
     const LogOutUser = () => {
         return signOut(auth);
+        setLoading(true);
     }
 
     // set observer
@@ -41,6 +44,7 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('currentUser', currentUser);
             setUser(currentUser);
+            setLoading(false);
         })
         return () => {
             unSubscribe();
@@ -54,6 +58,7 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         name,
         user,
+        loading,
         createUser,
         signInUser,
         LogOutUser

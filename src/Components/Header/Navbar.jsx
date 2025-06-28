@@ -15,6 +15,15 @@ const Navbar = () => {
                     <a className="btn btn-ghost text-xl">AuthUI</a>
                 </NavLink>
             </div>
+            <div className="list-none mr-5 font-bold btn btn-ghost">
+                {
+                    user && <>
+                        <NavLink to='/orders'>
+                            <li>Orders</li>
+                        </NavLink>
+                    </>
+                }
+            </div>
             <div className="flex gap-2">
                 <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
                 <div className="dropdown dropdown-end">
